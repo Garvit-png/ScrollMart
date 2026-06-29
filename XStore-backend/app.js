@@ -2,14 +2,14 @@
 const express=require('express');
 const { default: mongoose } = require('mongoose');
 //local Modules
+require('dotenv').config();
 
-const DB_PATH="mongodb+srv://chiragtyagi253_db_user:root@chirag.z6fugae.mongodb.net/XStore?appName=Chirag"
 const app=express();
 
 app.use(express.urlencoded({extended:true}))
 
-mongoose.connect(DB_PATH).then(()=>{
-  const PORT=3001
+mongoose.connect(process.env.DB_PATH).then(()=>{
+  const PORT=process.env.PORT
 app.listen(PORT,()=>{
   console.log(`This is the server link http://localhost:${PORT}`)
 })
